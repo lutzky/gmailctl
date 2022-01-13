@@ -139,3 +139,249 @@ Labels:
 +maillist
 +thirdlabel
 +differentlabel
+
+
+cmpDiff:
+  apply.GmailConfig{
+  	Labels: label.Labels{
++ 		s"differentlabel",
+- 		s"label2 [ID1]; color: red, blue",
++ 		s"label4; color: white, gray",
+  		{
+- 			ID:    "ID2",
++ 			ID:    "",
+- 			Name:  "label3",
++ 			Name:  "maillist",
+  			Color: nil,
+  		},
+- 		s"label4 [ID3]; color: white, black",
++ 		s"thirdlabel",
+  	},
+  	Filters: filter.Filters{
++ 		(
++ 			s"""
++ 			* Criteria:
++ 			    query: list:{list3 list1 list4 list6} -to:none@gmail.com
++ 			  Actions:
++ 			    archive
++ 			    categorize as: personal
++ 			    apply label: maillist
++ 			s"""
++ 		),
++ 		(
++ 			s"""
++ 			* Criteria:
++ 			    query: list:{list3 list1 list4 list6} -to:none@gmail.com
++ 			  Actions:
++ 			    apply label: differentlabel
++ 			s"""
++ 		),
++ 		(
++ 			s"""
++ 			* Criteria:
++ 			    query: list:{list3 list1 list4 list6} -to:none@gmail.com
++ 			  Actions:
++ 			    apply label: thirdlabel
++ 			s"""
++ 		),
++ 		(
++ 			s"""
++ 			* Criteria:
++ 			    from: spammer2
++ 			  Actions:
++ 			    delete
++ 			s"""
++ 		),
+- 		(
+- 			s"""
+- 			* Criteria:
+- 			    query: replyto:replyer@gmail.com
+- 			  Actions:
+- 			    archive
+- 			    mark as important
+- 			    never mark as spam
+- 			    mark as read
+- 			    star
+- 			    categorize as: social
+- 			    forward to: forward-address@gmail.com
+- 			s"""
+- 		),
++ 		(
++ 			s"""
++ 			* Criteria:
++ 			    to: pippo+spammy@gmail.com
++ 			  Actions:
++ 			    delete
++ 			s"""
++ 		),
+- 		(
+- 			s"""
+- 			* Criteria:
+- 			    query: cc:peeker@yahoo.com -subject:"a subject"
+- 			  Actions:
+- 			    archive
+- 			    mark as important
+- 			    never mark as spam
+- 			    mark as read
+- 			    star
+- 			    categorize as: social
+- 			    forward to: forward-address@gmail.com
+- 			s"""
+- 		),
++ 		(
++ 			s"""
++ 			* Criteria:
++ 			    query: "buy this thing"
++ 			  Actions:
++ 			    delete
++ 			s"""
++ 		),
+- 		(
+- 			s"""
+- 			* Criteria:
+- 			    query: is:muted
+- 			  Actions:
+- 			    archive
+- 			    mark as important
+- 			    never mark as spam
+- 			    mark as read
+- 			    star
+- 			    categorize as: social
+- 			    forward to: forward-address@gmail.com
+- 			s"""
+- 		),
++ 		(
++ 			s"""
++ 			* Criteria:
++ 			    from: spammer1
++ 			    subject: "spam mail"
++ 			    query: cc:foo@baz.com bcc:bar@baz.com
++ 			  Actions:
++ 			    delete
++ 			s"""
++ 		),
+- 		(
+- 			s"""
+- 			* Criteria:
+- 			    from: someone@gmail.com
+- 			  Actions:
+- 			    archive
+- 			    mark as important
+- 			    never mark as spam
+- 			    mark as read
+- 			    star
+- 			    categorize as: social
+- 			    forward to: forward-address@gmail.com
+- 			s"""
+- 		),
++ 		(
++ 			s"""
++ 			* Criteria:
++ 			    query: list:foobaz.mail.com -"action needed"
++ 			  Actions:
++ 			    delete
++ 			s"""
++ 		),
+  		{
+- 			ID: "7d73d01180da9dcbf890bd6c45bf45d4e3e89d81b6e1d5be9226933e1575deec",
++ 			ID: "",
+  			Action: filter.Actions{
+  				AddLabel:         "",
+  				Category:         "social",
+- 				Archive:          true,
++ 				Archive:          false,
+  				Delete:           false,
+  				MarkImportant:    true,
+  				MarkNotImportant: false,
+- 				MarkRead:         true,
++ 				MarkRead:         false,
+- 				MarkNotSpam:      true,
++ 				MarkNotSpam:      false,
+- 				Star:             true,
++ 				Star:             false,
+- 				Forward:          "forward-address@gmail.com",
++ 				Forward:          "other@mail.com",
+  			},
+  			Criteria: filter.Criteria{
+- 				From:    "",
++ 				From:    "baz+zuz@mail.com",
+  				To:      "",
+  				Subject: "",
+- 				Query:   "bcc:bccer@gmail.com",
++ 				Query:   "",
+  			},
+  		},
+- 		(
+- 			s"""
+- 			* Criteria:
+- 			    to: someone-else@gmail.com
+- 			  Actions:
+- 			    archive
+- 			    mark as important
+- 			    never mark as spam
+- 			    mark as read
+- 			    star
+- 			    categorize as: social
+- 			    forward to: forward-address@gmail.com
+- 			s"""
+- 		),
++ 		(
++ 			s"""
++ 			* Criteria:
++ 			    from: notfriend@gmail.com
++ 			    subject: "hey there"
++ 			    query: -to:none@gmail.com
++ 			  Actions:
++ 			    archive
++ 			    star
++ 			    categorize as: forums
++ 			s"""
++ 		),
+- 		(
+- 			s"""
+- 			* Criteria:
+- 			    query: "something in the body"
+- 			  Actions:
+- 			    archive
+- 			    mark as important
+- 			    never mark as spam
+- 			    mark as read
+- 			    star
+- 			    categorize as: social
+- 			    forward to: forward-address@gmail.com
+- 			s"""
+- 		),
+  		{
+- 			ID: "f45b360057c3ee614bc8da860df3625a5d969eee66faf1676bb2c0e904177b54",
++ 			ID: "",
+  			Action: filter.Actions{
+  				AddLabel:         "",
+- 				Category:         "",
++ 				Category:         "updates",
+  				Archive:          false,
+  				Delete:           false,
+  				MarkImportant:    false,
+- 				MarkNotImportant: true,
++ 				MarkNotImportant: false,
+  				MarkRead:         false,
+  				MarkNotSpam:      false,
+  				... // 2 identical fields
+  			},
+  			Criteria: filter.Criteria{
+  				From:    "",
+  				To:      "",
+  				Subject: "",
+- 				Query:   "list:maillist@google.com",
++ 				Query:   "bcc:aaaa@gmail.com",
+  			},
+  		},
++ 		(
++ 			s"""
++ 			* Criteria:
++ 			    to: alias@gmail.com
++ 			  Actions:
++ 			    categorize as: promotions
++ 			s"""
++ 		),
+  	},
+  }

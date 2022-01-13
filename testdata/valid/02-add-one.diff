@@ -127,3 +127,186 @@ Labels:
 +++ TO BE APPLIED
 @@ -0,0 +1 @@
 +label2; color: red, blue
+
+
+cmpDiff:
+  apply.GmailConfig{
+  	Labels: label.Labels{
++ 		s"label2; color: red, blue",
+  		{
+- 			ID:    "ID0",
++ 			ID:    "",
+  			Name:  "maillist",
+  			Color: nil,
+  		},
+  	},
+  	Filters: filter.Filters{
+  		{
+- 			ID:       "bdaa3535cda34ca43922afc33627a04f70929b70eb0ecc8b235d0300594b4017",
++ 			ID:       "",
+  			Action:   {AddLabel: "maillist"},
+  			Criteria: {Query: "list:maillist@google.com"},
+  		},
++ 		(
++ 			s"""
++ 			* Criteria:
++ 			    from: someone@gmail.com
++ 			  Actions:
++ 			    archive
++ 			    mark as important
++ 			    never mark as spam
++ 			    mark as read
++ 			    star
++ 			    categorize as: social
++ 			    apply label: maillist
++ 			    forward to: forward-address@gmail.com
++ 			s"""
++ 		),
++ 		(
++ 			s"""
++ 			* Criteria:
++ 			    from: someone@gmail.com
++ 			  Actions:
++ 			    apply label: label2
++ 			s"""
++ 		),
++ 		(
++ 			s"""
++ 			* Criteria:
++ 			    to: someone-else@gmail.com
++ 			  Actions:
++ 			    archive
++ 			    mark as important
++ 			    never mark as spam
++ 			    mark as read
++ 			    star
++ 			    categorize as: social
++ 			    apply label: maillist
++ 			    forward to: forward-address@gmail.com
++ 			s"""
++ 		),
++ 		(
++ 			s"""
++ 			* Criteria:
++ 			    to: someone-else@gmail.com
++ 			  Actions:
++ 			    apply label: label2
++ 			s"""
++ 		),
++ 		(
++ 			s"""
++ 			* Criteria:
++ 			    query: bcc:bccer@gmail.com
++ 			  Actions:
++ 			    archive
++ 			    mark as important
++ 			    never mark as spam
++ 			    mark as read
++ 			    star
++ 			    categorize as: social
++ 			    apply label: maillist
++ 			    forward to: forward-address@gmail.com
++ 			s"""
++ 		),
++ 		(
++ 			s"""
++ 			* Criteria:
++ 			    query: bcc:bccer@gmail.com
++ 			  Actions:
++ 			    apply label: label2
++ 			s"""
++ 		),
++ 		(
++ 			s"""
++ 			* Criteria:
++ 			    query: replyto:replyer@gmail.com
++ 			  Actions:
++ 			    archive
++ 			    mark as important
++ 			    never mark as spam
++ 			    mark as read
++ 			    star
++ 			    categorize as: social
++ 			    apply label: maillist
++ 			    forward to: forward-address@gmail.com
++ 			s"""
++ 		),
++ 		(
++ 			s"""
++ 			* Criteria:
++ 			    query: replyto:replyer@gmail.com
++ 			  Actions:
++ 			    apply label: label2
++ 			s"""
++ 		),
++ 		(
++ 			s"""
++ 			* Criteria:
++ 			    query: "something in the body"
++ 			  Actions:
++ 			    archive
++ 			    mark as important
++ 			    never mark as spam
++ 			    mark as read
++ 			    star
++ 			    categorize as: social
++ 			    apply label: maillist
++ 			    forward to: forward-address@gmail.com
++ 			s"""
++ 		),
++ 		(
++ 			s"""
++ 			* Criteria:
++ 			    query: "something in the body"
++ 			  Actions:
++ 			    apply label: label2
++ 			s"""
++ 		),
++ 		(
++ 			s"""
++ 			* Criteria:
++ 			    query: is:muted
++ 			  Actions:
++ 			    archive
++ 			    mark as important
++ 			    never mark as spam
++ 			    mark as read
++ 			    star
++ 			    categorize as: social
++ 			    apply label: maillist
++ 			    forward to: forward-address@gmail.com
++ 			s"""
++ 		),
++ 		(
++ 			s"""
++ 			* Criteria:
++ 			    query: is:muted
++ 			  Actions:
++ 			    apply label: label2
++ 			s"""
++ 		),
++ 		(
++ 			s"""
++ 			* Criteria:
++ 			    query: cc:peeker@yahoo.com -subject:"a subject"
++ 			  Actions:
++ 			    archive
++ 			    mark as important
++ 			    never mark as spam
++ 			    mark as read
++ 			    star
++ 			    categorize as: social
++ 			    apply label: maillist
++ 			    forward to: forward-address@gmail.com
++ 			s"""
++ 		),
++ 		(
++ 			s"""
++ 			* Criteria:
++ 			    query: cc:peeker@yahoo.com -subject:"a subject"
++ 			  Actions:
++ 			    apply label: label2
++ 			s"""
++ 		),
+  	},
+  }

@@ -5,6 +5,7 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/google/go-cmp/cmp"
 	"github.com/mbrt/gmailctl/internal/engine/config/v1alpha3"
 	"github.com/mbrt/gmailctl/internal/engine/filter"
 	"github.com/mbrt/gmailctl/internal/engine/label"
@@ -75,7 +76,8 @@ type ConfigDiff struct {
 	FiltersDiff filter.FiltersDiff
 	LabelsDiff  label.LabelsDiff
 
-	LocalConfig GmailConfig
+	LocalConfig  GmailConfig
+	RemoteConfig GmailConfig
 }
 
 func (d ConfigDiff) String() string {
@@ -90,7 +92,9 @@ func (d ConfigDiff) String() string {
 		res = append(res, d.LabelsDiff.String())
 	}
 
-	return strings.Join(res, "\n")
+	cmpDiff := cmp.Diff(d.RemoteConfig, d.LocalConfig)
+
+	return strings.Join(res, "\n") + "\n\ncmpDiff:\n" + cmpDiff
 }
 
 // Empty returns whether the diff contains no changes.
@@ -115,7 +119,8 @@ func (d ConfigDiff) Validate() error {
 // Diff computes the diff between local and upstream configuration.
 func Diff(local, upstream GmailConfig) (ConfigDiff, error) {
 	res := ConfigDiff{
-		LocalConfig: local,
+		LocalConfig:  local,
+		RemoteConfig: upstream,
 	}
 	var err error
 

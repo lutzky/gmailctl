@@ -1,0 +1,21 @@
+
+
+cmpDiff:
+  apply.GmailConfig{
+  	Labels: label.Labels{
+  		{
+- 			ID:    "ID0",
++ 			ID:    "",
+  			Name:  "maillist",
+  			Color: nil,
+  		},
+  	},
+  	Filters: filter.Filters{
+  		{
+- 			ID:       "bdaa3535cda34ca43922afc33627a04f70929b70eb0ecc8b235d0300594b4017",
++ 			ID:       "",
+  			Action:   {AddLabel: "maillist"},
+  			Criteria: {Query: "list:maillist@google.com"},
+  		},
+  	},
+  }

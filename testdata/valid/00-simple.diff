@@ -13,3 +13,21 @@ Labels:
 +++ TO BE APPLIED
 @@ -0,0 +1 @@
 +maillist
+
+
+cmpDiff:
+  apply.GmailConfig{
+- 	Labels:  s"",
++ 	Labels:  s"maillist",
+- 	Filters: filter.Filters{},
++ 	Filters: filter.Filters{
++ 		(
++ 			s"""
++ 			* Criteria:
++ 			    query: list:maillist@google.com
++ 			  Actions:
++ 			    apply label: maillist
++ 			s"""
++ 		),
++ 	},
+  }

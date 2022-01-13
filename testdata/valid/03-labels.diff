@@ -131,3 +131,224 @@ Labels:
 -maillist
 +label3
 +label4; color: white, black
+
+
+cmpDiff:
+  apply.GmailConfig{
+  	Labels: label.Labels{
+  		{
+- 			ID:    "ID1",
++ 			ID:    "",
+  			Name:  "label2",
+- 			Color: &label.Color{Background: "red", Text: "blue"},
++ 			Color: nil,
+  		},
+  		{
+- 			ID:    "ID0",
++ 			ID:    "",
+- 			Name:  "maillist",
++ 			Name:  "label3",
+  			Color: nil,
+  		},
++ 		s"label4; color: white, black",
+  	},
+  	Filters: filter.Filters{
+  		{
+- 			ID: "006c6a6823c8e0953cd79e0ef72cb9ac2bef92613f3be76e7e63c93132ce7814",
++ 			ID: "",
+  			Action: filter.Actions{
+- 				AddLabel:         "label2",
++ 				AddLabel:         "",
+  				Category:         "",
+  				Archive:          false,
+  				Delete:           false,
+  				MarkImportant:    false,
+- 				MarkNotImportant: false,
++ 				MarkNotImportant: true,
+  				MarkRead:         false,
+  				MarkNotSpam:      false,
+  				... // 2 identical fields
+  			},
+  			Criteria: filter.Criteria{
+  				From:    "",
+- 				To:      "someone-else@gmail.com",
++ 				To:      "",
+  				Subject: "",
+- 				Query:   "",
++ 				Query:   "list:maillist@google.com",
+  			},
+  		},
+  		{
+- 			ID: "105f215bbcc00a96e2de7dd9b5dbce5dfff61bce8614f686eaf062bcda45ecf1",
++ 			ID: "",
+  			Action: filter.Actions{
+- 				AddLabel: "maillist",
++ 				AddLabel: "",
+  				Category: "social",
+  				Archive:  true,
+  				... // 7 identical fields
+  			},
+  			Criteria: {From: "someone@gmail.com"},
+  		},
+- 		(
+- 			s"""
+- 			* Criteria:
+- 			    query: replyto:replyer@gmail.com
+- 			  Actions:
+- 			    apply label: label2
+- 			s"""
+- 		),
+  		{
+- 			ID: "2f50dd365269a572589dfd307f9964219ec9c6d528b34c854031cff779e3c570",
++ 			ID: "",
+  			Action: filter.Actions{
+- 				AddLabel: "maillist",
++ 				AddLabel: "",
+  				Category: "social",
+  				Archive:  true,
+  				... // 7 identical fields
+  			},
+  			Criteria: filter.Criteria{
+  				From:    "",
+- 				To:      "",
++ 				To:      "someone-else@gmail.com",
+  				Subject: "",
+- 				Query:   `cc:peeker@yahoo.com -subject:"a subject"`,
++ 				Query:   "",
+  			},
+  		},
+  		{
+- 			ID: "65608a502001ab6875bcb81f0e1a30e0efd47699b5be236b01f6215b58fdfb81",
++ 			ID: "",
+  			Action: filter.Actions{
+- 				AddLabel: "maillist",
++ 				AddLabel: "",
+  				Category: "social",
+  				Archive:  true,
+  				... // 7 identical fields
+  			},
+  			Criteria: filter.Criteria{
+  				From:    "",
+  				To:      "",
+  				Subject: "",
+- 				Query:   "is:muted",
++ 				Query:   "bcc:bccer@gmail.com",
+  			},
+  		},
+  		{
+- 			ID: "8b16d9254d7a93dfa36fa5df768556963f942a48df3f07ef0c0628c409ca72df",
++ 			ID: "",
+  			Action: filter.Actions{
+- 				AddLabel: "maillist",
++ 				AddLabel: "",
+  				Category: "social",
+  				Archive:  true,
+  				... // 7 identical fields
+  			},
+  			Criteria: filter.Criteria{
+  				From:    "",
+  				To:      "",
+  				Subject: "",
+- 				Query:   "bcc:bccer@gmail.com",
++ 				Query:   "replyto:replyer@gmail.com",
+  			},
+  		},
+- 		(
+- 			s"""
+- 			* Criteria:
+- 			    query: "something in the body"
+- 			  Actions:
+- 			    apply label: label2
+- 			s"""
+- 		),
+- 		(
+- 			s"""
+- 			* Criteria:
+- 			    query: bcc:bccer@gmail.com
+- 			  Actions:
+- 			    apply label: label2
+- 			s"""
+- 		),
+- 		(
+- 			s"""
+- 			* Criteria:
+- 			    query: list:maillist@google.com
+- 			  Actions:
+- 			    apply label: maillist
+- 			s"""
+- 		),
+- 		(
+- 			s"""
+- 			* Criteria:
+- 			    query: is:muted
+- 			  Actions:
+- 			    apply label: label2
+- 			s"""
+- 		),
+- 		(
+- 			s"""
+- 			* Criteria:
+- 			    from: someone@gmail.com
+- 			  Actions:
+- 			    apply label: label2
+- 			s"""
+- 		),
+  		{
+- 			ID: "c7da620a5128891cc0fc224c8d37ad5224c9f3c5035a26460119a321dc27398f",
++ 			ID: "",
+  			Action: filter.Actions{
+- 				AddLabel: "maillist",
++ 				AddLabel: "",
+  				Category: "social",
+  				Archive:  true,
+  				... // 7 identical fields
+  			},
+  			Criteria: {Query: `"something in the body"`},
+  		},
+- 		(
+- 			s"""
+- 			* Criteria:
+- 			    query: cc:peeker@yahoo.com -subject:"a subject"
+- 			  Actions:
+- 			    apply label: label2
+- 			s"""
+- 		),
+  		{
+- 			ID: "f07295c3bd7a1a2df8e2243093678c38a1ee09787d89b8d5860d217e70ceec3e",
++ 			ID: "",
+  			Action: filter.Actions{
+- 				AddLabel: "maillist",
++ 				AddLabel: "",
+  				Category: "social",
+  				Archive:  true,
+  				... // 7 identical fields
+  			},
+  			Criteria: filter.Criteria{
+  				From:    "",
+- 				To:      "someone-else@gmail.com",
++ 				To:      "",
+  				Subject: "",
+- 				Query:   "",
++ 				Query:   "is:muted",
+  			},
+  		},
+  		{
+- 			ID: "f51c1b1da30e5739f663c2468d96bf4ccc160c26d0ba535ffacb2d15e6c25f04",
++ 			ID: "",
+  			Action: filter.Actions{
+- 				AddLabel: "maillist",
++ 				AddLabel: "",
+  				Category: "social",
+  				Archive:  true,
+  				... // 7 identical fields
+  			},
+  			Criteria: filter.Criteria{
+  				From:    "",
+  				To:      "",
+  				Subject: "",
+- 				Query:   "replyto:replyer@gmail.com",
++ 				Query:   `cc:peeker@yahoo.com -subject:"a subject"`,
+  			},
+  		},
+  	},
+  }

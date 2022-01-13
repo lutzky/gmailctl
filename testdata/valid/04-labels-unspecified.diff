@@ -1,0 +1,129 @@
+
+
+cmpDiff:
+  apply.GmailConfig{
+- 	Labels: s"label2 [ID1]; color: red, blue\nlabel3 [ID2]\nlabel4 [ID3]; color: white, black",
++ 	Labels: s"",
+  	Filters: filter.Filters{
+- 		(
+- 			s"""
+- 			* Criteria:
+- 			    query: replyto:replyer@gmail.com
+- 			  Actions:
+- 			    archive
+- 			    mark as important
+- 			    never mark as spam
+- 			    mark as read
+- 			    star
+- 			    categorize as: social
+- 			    forward to: forward-address@gmail.com
+- 			s"""
+- 		),
++ 		(
++ 			s"""
++ 			* Criteria:
++ 			    query: list:maillist@google.com
++ 			  Actions:
++ 			    never mark as important
++ 			s"""
++ 		),
+  		{
+- 			ID:     "5c25c96e9232e27816c722c424129a431e0f155b9c43bec448834d9c83dbea89",
++ 			ID:     "",
+  			Action: {Category: "social", Archive: true, MarkImportant: true, MarkRead: true, ...},
+  			Criteria: filter.Criteria{
+- 				From:    "",
++ 				From:    "someone@gmail.com",
+  				To:      "",
+  				Subject: "",
+- 				Query:   `cc:peeker@yahoo.com -subject:"a subject"`,
++ 				Query:   "",
+  			},
+  		},
+  		{
+- 			ID:     "6c38bd5e7843b0d7e2dcb116b8dc0a3cca3d385b296e72e458a5525802f159b9",
++ 			ID:     "",
+  			Action: {Category: "social", Archive: true, MarkImportant: true, MarkRead: true, ...},
+  			Criteria: filter.Criteria{
+  				From:    "",
+- 				To:      "",
++ 				To:      "someone-else@gmail.com",
+  				Subject: "",
+- 				Query:   "is:muted",
++ 				Query:   "",
+  			},
+  		},
+  		{
+- 			ID:     "6c883019aa1efd2e5a75314b5333b7f252bc3b85eac72ae24aa8d649b3f85c96",
++ 			ID:     "",
+  			Action: {Category: "social", Archive: true, MarkImportant: true, MarkRead: true, ...},
+  			Criteria: filter.Criteria{
+- 				From:    "someone@gmail.com",
++ 				From:    "",
+  				To:      "",
+  				Subject: "",
+- 				Query:   "",
++ 				Query:   "bcc:bccer@gmail.com",
+  			},
+  		},
+  		{
+- 			ID:     "7d73d01180da9dcbf890bd6c45bf45d4e3e89d81b6e1d5be9226933e1575deec",
++ 			ID:     "",
+  			Action: {Category: "social", Archive: true, MarkImportant: true, MarkRead: true, ...},
+  			Criteria: filter.Criteria{
+  				From:    "",
+  				To:      "",
+  				Subject: "",
+- 				Query:   "bcc:bccer@gmail.com",
++ 				Query:   "replyto:replyer@gmail.com",
+  			},
+  		},
+  		{
+- 			ID:     "ac39493e839fb759ad314269134098ee8cddb29e206b7336798f5de6edf310aa",
++ 			ID:     "",
+  			Action: {Category: "social", Archive: true, MarkImportant: true, MarkRead: true, ...},
+  			Criteria: filter.Criteria{
+  				From:    "",
+- 				To:      "someone-else@gmail.com",
++ 				To:      "",
+  				Subject: "",
+- 				Query:   "",
++ 				Query:   `"something in the body"`,
+  			},
+  		},
+  		{
+- 			ID:     "d729d32c9d8de9ac3b5fc30078756f87d9080475a215751f39e6bfa8b39e5916",
++ 			ID:     "",
+  			Action: {Category: "social", Archive: true, MarkImportant: true, MarkRead: true, ...},
+  			Criteria: filter.Criteria{
+  				From:    "",
+  				To:      "",
+  				Subject: "",
+- 				Query:   `"something in the body"`,
++ 				Query:   "is:muted",
+  			},
+  		},
+- 		(
+- 			s"""
+- 			* Criteria:
+- 			    query: list:maillist@google.com
+- 			  Actions:
+- 			    never mark as important
+- 			s"""
+- 		),
++ 		(
++ 			s"""
++ 			* Criteria:
++ 			    query: cc:peeker@yahoo.com -subject:"a subject"
++ 			  Actions:
++ 			    archive
++ 			    mark as important
++ 			    never mark as spam
++ 			    mark as read
++ 			    star
++ 			    categorize as: social
++ 			    forward to: forward-address@gmail.com
++ 			s"""
++ 		),
+  	},
+  }
